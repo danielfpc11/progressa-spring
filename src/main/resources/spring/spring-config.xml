@@ -9,6 +9,9 @@
 
     <import resource="classpath:spring/spring-converters.xml"/>
     <import resource="classpath:spring/spring-facades.xml"/>
+    <import resource="classpath:spring/spring-populators.xml"/>
+
+    <!--
     <import resource="classpath:spring/spring-filters.xml"/>
     <import resource="classpath:spring/spring-security.xml"/>
     <import resource="classpath:spring/spring-validators.xml"/>
