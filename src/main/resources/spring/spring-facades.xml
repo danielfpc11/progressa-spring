@@ -3,6 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <alias name="defaultExerciseFacade" alias="exerciseFacade"/>
+    <bean id="defaultExerciseFacade" class="progressa.progressaspring.facades.impl.DefaultExerciseFacadeImpl">
+        <constructor-arg name="exerciseService" ref="defaultExerciseServiceImpl"/>
+        <constructor-arg name="exerciseConverter" ref="exerciseConverter"/>
+        <constructor-arg name="exerciseReverseConverter" ref="exerciseReverseConverter"/>
+    </bean>
+
     <alias name="defaultWorkoutFacade" alias="workoutFacade"/>
     <bean id="defaultWorkoutFacade" class="progressa.progressaspring.facades.impl.DefaultWorkoutFacadeImpl">
         <constructor-arg name="workoutService" ref="defaultWorkoutServiceImpl"/>
