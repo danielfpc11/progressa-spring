@@ -1,10 +1,12 @@
 package progressa.progressaspring.facades.impl;
 
 import lombok.AllArgsConstructor;
+import org.springframework.core.convert.converter.Converter;
 import progressa.progressaspring.converters.workout.WorkoutConverter;
 import progressa.progressaspring.converters.workout.WorkoutReverseConverter;
 import progressa.progressaspring.datas.WorkoutData;
 import progressa.progressaspring.facades.WorkoutFacade;
+import progressa.progressaspring.models.WorkoutModel;
 import progressa.progressaspring.services.WorkoutService;
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +18,8 @@ import java.util.Optional;
 public class DefaultWorkoutFacadeImpl implements WorkoutFacade {
 
     private final WorkoutService workoutService;
-    private final WorkoutConverter workoutConverter;
-    private final WorkoutReverseConverter workoutReverseConverter;
+    private final Converter<WorkoutModel, WorkoutData> workoutConverter;
+    private final Converter<WorkoutData, WorkoutModel> workoutReverseConverter;
 
     @Override
     public List<WorkoutData> findAll() {
