@@ -9,6 +9,12 @@
     <alias name="defaultExerciseModelPopulator" alias="exerciseModelPopulator"/>
     <bean id="defaultExerciseModelPopulator" class="progressa.progressaspring.populators.exercise.ExerciseModelPopulator"/>
 
+    <alias name="defaultSetDataPopulator" alias="setDataPopulator"/>
+    <bean id="defaultSetDataPopulator" class="progressa.progressaspring.populators.set.SetDataPopulator"/>
+
+    <alias name="defaultSetModelPopulator" alias="setModelPopulator"/>
+    <bean id="defaultSetModelPopulator" class="progressa.progressaspring.populators.set.SetModelPopulator"/>
+
     <alias name="defaultWorkoutDataPopulator" alias="workoutDataPopulator"/>
     <bean id="defaultWorkoutDataPopulator" class="progressa.progressaspring.populators.workout.WorkoutDataPopulator"/>
 
