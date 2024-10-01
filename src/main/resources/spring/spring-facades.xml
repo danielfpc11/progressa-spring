@@ -10,6 +10,13 @@
         <constructor-arg name="exerciseReverseConverter" ref="exerciseReverseConverter"/>
     </bean>
 
+    <alias name="defaultSetFacade" alias="setFacade"/>
+    <bean id="defaultSetFacade" class="progressa.progressaspring.facades.impl.DefaultSetFacadeImpl">
+        <constructor-arg name="setService" ref="defaultSetServiceImpl"/>
+        <constructor-arg name="setConverter" ref="setConverter"/>
+        <constructor-arg name="setReverseConverter" ref="setReverseConverter"/>
+    </bean>
+
     <alias name="defaultWorkoutFacade" alias="workoutFacade"/>
     <bean id="defaultWorkoutFacade" class="progressa.progressaspring.facades.impl.DefaultWorkoutFacadeImpl">
         <constructor-arg name="workoutService" ref="defaultWorkoutServiceImpl"/>
