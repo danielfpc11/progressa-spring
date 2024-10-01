@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExerciseData {
+public class ExerciseTypeData {
 
     private Long id;
     private String name;
