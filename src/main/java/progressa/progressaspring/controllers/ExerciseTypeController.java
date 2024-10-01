@@ -21,7 +21,7 @@ import java.util.Optional;
  * @author danielfpc11@gmail.com
  */
 @Controller
-@RequestMapping("/exercise")
+@RequestMapping("/exercise-type")
 public class ExerciseTypeController {
 
     @Resource
