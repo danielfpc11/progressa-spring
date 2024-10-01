@@ -6,5 +6,5 @@ import progressa.progressaspring.models.ExerciseTypeModel;
 /**
  * @author danielfpc11@gmail.com
  */
-public interface ExerciseRepository extends JpaRepository<ExerciseTypeModel, Long> {
+public interface ExerciseTypeRepository extends JpaRepository<ExerciseTypeModel, Long> {
 }
