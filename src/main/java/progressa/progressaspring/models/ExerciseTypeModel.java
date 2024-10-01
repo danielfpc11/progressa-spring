@@ -15,12 +15,12 @@ import lombok.NoArgsConstructor;
  * @author danielfpc11@gmail.com
  */
 @Entity
-@Table(name = "exercise")
+@Table(name = "exercise_type")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExerciseModel {
+public class ExerciseTypeModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
