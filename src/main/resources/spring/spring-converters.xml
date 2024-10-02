@@ -4,12 +4,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <alias name="defaultExerciseConverter" alias="exerciseConverter"/>
-    <bean id="defaultExerciseConverter" class="progressa.progressaspring.converters.exercise.ExerciseConverter"/>
+    <bean id="defaultExerciseConverter" class="progressa.progressaspring.converters.exercise.ExerciseConverter">
+        <constructor-arg name="setConverter" ref="setConverter"/>
+    </bean>
 
     <alias name="defaultExerciseReverseConverter" alias="exerciseReverseConverter"/>
     <bean id="defaultExerciseReverseConverter" class="progressa.progressaspring.converters.exercise.ExerciseReverseConverter">
         <constructor-arg name="workoutService" ref="defaultWorkoutServiceImpl"/>
         <constructor-arg name="exerciseTypeService" ref="defaultExerciseTypeServiceImpl"/>
+        <constructor-arg name="setReverseConverter" ref="setReverseConverter"/>
     </bean>
 
     <alias name="defaultExerciseTypeConverter" alias="exerciseTypeConverter"/>

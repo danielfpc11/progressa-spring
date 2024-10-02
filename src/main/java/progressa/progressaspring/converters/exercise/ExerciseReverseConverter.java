@@ -3,7 +3,9 @@ package progressa.progressaspring.converters.exercise;
 import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import progressa.progressaspring.datas.ExerciseData;
+import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.models.ExerciseModel;
+import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.services.ExerciseTypeService;
 import progressa.progressaspring.services.WorkoutService;
 import progressa.progressaspring.utils.AssertUtils;
@@ -16,6 +18,7 @@ public class ExerciseReverseConverter implements Converter<ExerciseData, Exercis
 
     private final WorkoutService workoutService;
     private final ExerciseTypeService exerciseTypeService;
+    private final Converter<SetData, SetModel> setReverseConverter;
 
     @Override
     public ExerciseModel convert(final ExerciseData exerciseData) {
@@ -26,6 +29,10 @@ public class ExerciseReverseConverter implements Converter<ExerciseData, Exercis
                                                         .orElseThrow())
                             .exerciseTypeModel(exerciseTypeService.findById(exerciseData.getExerciseTypeId())
                                                                   .orElseThrow())
+                            .setModels(exerciseData.getSetDatas()
+                                                   .stream()
+                                                   .map(setReverseConverter::convert)
+                                                   .toList())
                             .build();
     }
 
