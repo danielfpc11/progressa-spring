@@ -15,6 +15,7 @@ public class ExerciseConverter implements Converter<ExerciseModel, ExerciseData>
         AssertUtils.notNull(exerciseModel, ExerciseModel.class);
         return ExerciseData.builder()
                            .id(exerciseModel.getId())
+                           .workoutId(exerciseModel.getWorkoutModel().getId())
                            .build();
     }
 
