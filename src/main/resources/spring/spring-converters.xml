@@ -13,10 +13,14 @@
     </bean>
 
     <alias name="defaultExerciseTypeConverter" alias="exerciseTypeConverter"/>
-    <bean id="defaultExerciseTypeConverter" class="progressa.progressaspring.converters.exercisetype.ExerciseTypeConverter"/>
+    <bean id="defaultExerciseTypeConverter" class="progressa.progressaspring.converters.exercisetype.ExerciseTypeConverter">
+        <constructor-arg name="exerciseConverter" ref="exerciseConverter"/>
+    </bean>
 
     <alias name="defaultExerciseTypeReverseConverter" alias="exerciseTypeReverseConverter"/>
-    <bean id="defaultExerciseTypeReverseConverter" class="progressa.progressaspring.converters.exercisetype.ExerciseTypeReverseConverter"/>
+    <bean id="defaultExerciseTypeReverseConverter" class="progressa.progressaspring.converters.exercisetype.ExerciseTypeReverseConverter">
+        <constructor-arg name="exerciseReverseConverter" ref="exerciseReverseConverter"/>
+    </bean>
 
     <alias name="defaultSetConverter" alias="setConverter"/>
     <bean id="defaultSetConverter" class="progressa.progressaspring.converters.set.SetConverter"/>
