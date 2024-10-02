@@ -6,11 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 /**
  * @author danielfpc11@gmail.com
@@ -34,5 +36,8 @@ public class ExerciseModel {
     @ManyToOne
     @JoinColumn(name = "exercise_type_id")
     private ExerciseTypeModel exerciseTypeModel;
+
+    @OneToMany(mappedBy = "exerciseModel")
+    private List<SetModel> setModels;
 
 }
