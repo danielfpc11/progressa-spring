@@ -19,5 +19,6 @@ public class SetData {
     private Float weight;
     private Integer repetitions;
     private Integer rir;
+    private Long exerciseId;
 
 }
