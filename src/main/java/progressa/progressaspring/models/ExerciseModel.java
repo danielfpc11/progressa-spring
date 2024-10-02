@@ -31,4 +31,8 @@ public class ExerciseModel {
     @JoinColumn(name = "workout_id")
     private WorkoutModel workoutModel;
 
+    @ManyToOne
+    @JoinColumn(name = "exercise_type_id")
+    private ExerciseTypeModel exerciseTypeModel;
+
 }
