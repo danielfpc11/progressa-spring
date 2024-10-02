@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author danielfpc11@gmail.com
@@ -17,5 +18,6 @@ public class WorkoutData {
 
     private Long id;
     private Date date;
+    private List<ExerciseData> exerciseDatas;
 
 }

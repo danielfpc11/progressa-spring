@@ -15,5 +15,6 @@ import lombok.NoArgsConstructor;
 public class ExerciseData {
 
     private Long id;
+    private Long workout_id;
 
 }
