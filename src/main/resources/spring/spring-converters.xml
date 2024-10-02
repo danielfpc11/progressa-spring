@@ -24,9 +24,13 @@
     <bean id="defaultSetReverseConverter" class="progressa.progressaspring.converters.set.SetReverseConverter"/>
 
     <alias name="defaultWorkoutConverter" alias="workoutConverter"/>
-    <bean id="defaultWorkoutConverter" class="progressa.progressaspring.converters.workout.WorkoutConverter"/>
+    <bean id="defaultWorkoutConverter" class="progressa.progressaspring.converters.workout.WorkoutConverter">
+        <constructor-arg name="exerciseConverter" ref="exerciseConverter"/>
+    </bean>
 
     <alias name="defaultWorkoutReverseConverter" alias="workoutReverseConverter"/>
-    <bean id="defaultWorkoutReverseConverter" class="progressa.progressaspring.converters.workout.WorkoutReverseConverter"/>
+    <bean id="defaultWorkoutReverseConverter" class="progressa.progressaspring.converters.workout.WorkoutReverseConverter">
+        <constructor-arg name="exerciseReverseConverter" ref="exerciseReverseConverter"/>
+    </bean>
 
 </beans>
