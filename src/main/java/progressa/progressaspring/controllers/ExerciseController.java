@@ -37,8 +37,8 @@ public class ExerciseController {
     @GetMapping("/get/{id}")
     public ResponseEntity<ExerciseData> findAll(@PathVariable final Long id) {
         return ExerciseFacade.findById(id)
-                                 .map(ResponseEntity::ok)
-                                 .orElseThrow();
+                             .map(ResponseEntity::ok)
+                             .orElseThrow();
     }
 
     @PostMapping("/new")
@@ -52,12 +52,12 @@ public class ExerciseController {
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> saveUpdate(@PathVariable final Long id, @RequestBody final ExerciseData exerciseData) {
         return ExerciseFacade.findById(id)
-                                 .map(exerciseDataFound -> {
-                                     exerciseDataPopulator.populate(exerciseData, exerciseDataFound);
-                                     return ExerciseFacade.save(exerciseDataFound);
-                                 })
-                                 .map(exerciseDataFound -> ResponseEntity.ok().build())
-                                 .orElseThrow();
+                             .map(exerciseDataFound -> {
+                                 exerciseDataPopulator.populate(exerciseData, exerciseDataFound);
+                                 return ExerciseFacade.save(exerciseDataFound);
+                             })
+                             .map(exerciseDataFound -> ResponseEntity.ok().build())
+                             .orElseThrow();
     }
 
     @DeleteMapping("/delete/{id}")
