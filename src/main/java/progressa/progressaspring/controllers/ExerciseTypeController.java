@@ -56,7 +56,7 @@ public class ExerciseTypeController {
                                      exerciseTypeDataPopulator.populate(exerciseTypeData, exerciseTypeDataFound);
                                      return exerciseTypeFacade.save(exerciseTypeDataFound);
                                  })
-                                 .map(exerciseDataFound -> ResponseEntity.ok().build())
+                                 .map(exerciseTypeDataFound -> ResponseEntity.ok().build())
                                  .orElseThrow();
     }
 
