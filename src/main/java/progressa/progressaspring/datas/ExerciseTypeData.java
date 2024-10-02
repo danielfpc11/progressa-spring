@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * @author danielfpc11@gmail.com
  */
@@ -16,5 +18,6 @@ public class ExerciseTypeData {
 
     private Long id;
     private String name;
+    private List<ExerciseData> exerciseDatas;
 
 }
