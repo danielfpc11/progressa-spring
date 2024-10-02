@@ -18,6 +18,7 @@ public class SetDataPopulator extends BasePopulator<SetData, SetData> {
         setDataTarget.setWeight(setDataSource.getWeight());
         setDataTarget.setRepetitions(setDataSource.getRepetitions());
         setDataTarget.setRir(setDataSource.getRir());
+        setDataTarget.setExerciseId(setDataSource.getExerciseId());
     }
 
 }

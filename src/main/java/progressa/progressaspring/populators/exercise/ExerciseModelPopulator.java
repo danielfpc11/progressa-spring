@@ -16,6 +16,7 @@ public class ExerciseModelPopulator extends BasePopulator<ExerciseModel, Exercis
 
         exerciseModelTarget.setWorkoutModel(exerciseModelSource.getWorkoutModel());
         exerciseModelTarget.setExerciseTypeModel(exerciseModelSource.getExerciseTypeModel());
+        exerciseModelTarget.setSetModels(exerciseModelSource.getSetModels());
     }
 
 }

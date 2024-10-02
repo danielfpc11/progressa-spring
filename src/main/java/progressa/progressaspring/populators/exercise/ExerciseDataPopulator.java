@@ -16,6 +16,7 @@ public class ExerciseDataPopulator extends BasePopulator<ExerciseData, ExerciseD
 
         exerciseDataTarget.setWorkoutId(exerciseDataSource.getWorkoutId());
         exerciseDataTarget.setExerciseTypeId(exerciseDataSource.getExerciseTypeId());
+        exerciseDataTarget.setSetDatas(exerciseDataSource.getSetDatas());
     }
 
 }

@@ -18,6 +18,7 @@ public class SetModelPopulator extends BasePopulator<SetModel, SetModel> {
         setModelTarget.setWeight(setModelSource.getWeight());
         setModelTarget.setRepetitions(setModelSource.getRepetitions());
         setModelTarget.setRir(setModelSource.getRir());
+        setModelTarget.setExerciseModel(setModelSource.getExerciseModel());
     }
 
 }
