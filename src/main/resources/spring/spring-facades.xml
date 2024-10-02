@@ -4,7 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <alias name="defaultExerciseFacade" alias="exerciseFacade"/>
-    <bean id="defaultExerciseFacade" class="progressa.progressaspring.facades.impl.DefaultExerciseTypeFacadeImpl">
+    <bean id="defaultExerciseFacade" class="progressa.progressaspring.facades.impl.DefaultExerciseFacadeImpl">
+        <constructor-arg name="exerciseService" ref="defaultExerciseServiceImpl"/>
+        <constructor-arg name="exerciseConverter" ref="exerciseConverter"/>
+        <constructor-arg name="exerciseReverseConverter" ref="exerciseReverseConverter"/>
+    </bean>
+
+    <alias name="defaultExerciseTypeFacade" alias="exerciseTypeFacade"/>
+    <bean id="defaultExerciseTypeFacade" class="progressa.progressaspring.facades.impl.DefaultExerciseTypeFacadeImpl">
         <constructor-arg name="exerciseTypeService" ref="defaultExerciseTypeServiceImpl"/>
         <constructor-arg name="exerciseTypeConverter" ref="exerciseTypeConverter"/>
         <constructor-arg name="exerciseTypeReverseConverter" ref="exerciseTypeReverseConverter"/>
