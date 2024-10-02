@@ -16,6 +16,7 @@ public class ExerciseConverter implements Converter<ExerciseModel, ExerciseData>
         return ExerciseData.builder()
                            .id(exerciseModel.getId())
                            .workoutId(exerciseModel.getWorkoutModel().getId())
+                           .exerciseTypeId(exerciseModel.getExerciseTypeModel().getId())
                            .build();
     }
 

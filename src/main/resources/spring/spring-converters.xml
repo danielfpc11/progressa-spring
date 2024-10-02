@@ -9,6 +9,7 @@
     <alias name="defaultExerciseReverseConverter" alias="exerciseReverseConverter"/>
     <bean id="defaultExerciseReverseConverter" class="progressa.progressaspring.converters.exercise.ExerciseReverseConverter">
         <constructor-arg name="workoutService" ref="defaultWorkoutServiceImpl"/>
+        <constructor-arg name="exerciseTypeService" ref="defaultExerciseTypeServiceImpl"/>
     </bean>
 
     <alias name="defaultExerciseTypeConverter" alias="exerciseTypeConverter"/>
