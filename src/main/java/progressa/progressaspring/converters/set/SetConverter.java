@@ -19,6 +19,7 @@ public class SetConverter implements Converter<SetModel, SetData> {
                       .weight(setModel.getWeight())
                       .repetitions(setModel.getRepetitions())
                       .rir(setModel.getRir())
+                      .exerciseId(setModel.getExerciseModel().getId())
                       .build();
     }
 
