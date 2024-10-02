@@ -15,6 +15,7 @@ public class WorkoutDataPopulator extends BasePopulator<WorkoutData, WorkoutData
         Assert.notNull(workoutDataTarget, TARGET_NOT_NULL_MESSAGE);
 
         workoutDataTarget.setDate(workoutDataSource.getDate());
+        workoutDataTarget.setExerciseDatas(workoutDataSource.getExerciseDatas());
     }
 
 }

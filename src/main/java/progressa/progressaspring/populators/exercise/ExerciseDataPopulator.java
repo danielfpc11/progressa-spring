@@ -13,6 +13,8 @@ public class ExerciseDataPopulator extends BasePopulator<ExerciseData, ExerciseD
     public void populate(final ExerciseData exerciseDataSource, final ExerciseData exerciseDataTarget) {
         Assert.notNull(exerciseDataSource, SOURCE_NOT_NULL_MESSAGE);
         Assert.notNull(exerciseDataTarget, TARGET_NOT_NULL_MESSAGE);
+
+        exerciseDataTarget.setWorkoutId(exerciseDataSource.getWorkoutId());
     }
 
 }
