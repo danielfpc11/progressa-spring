@@ -3,6 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <alias name="defaultExerciseDataPopulator" alias="exerciseDataPopulator"/>
+    <bean id="defaultExerciseDataPopulator" class="progressa.progressaspring.populators.exercise.ExerciseDataPopulator"/>
+
+    <alias name="defaultExerciseModelPopulator" alias="exerciseModelPopulator"/>
+    <bean id="defaultExerciseModelPopulator" class="progressa.progressaspring.populators.exercise.ExerciseModelPopulator"/>
+
     <alias name="defaultExerciseTypeDataPopulator" alias="exerciseTypeDataPopulator"/>
     <bean id="defaultExerciseTypeDataPopulator" class="progressa.progressaspring.populators.exercisetype.ExerciseTypeDataPopulator"/>
 
