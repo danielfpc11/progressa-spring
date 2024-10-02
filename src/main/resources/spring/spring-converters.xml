@@ -3,6 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <alias name="defaultExerciseConverter" alias="exerciseConverter"/>
+    <bean id="defaultExerciseConverter" class="progressa.progressaspring.converters.exercise.ExerciseConverter"/>
+
+    <alias name="defaultExerciseReverseConverter" alias="exerciseReverseConverter"/>
+    <bean id="defaultExerciseReverseConverter" class="progressa.progressaspring.converters.exercise.ExerciseReverseConverter"/>
+
     <alias name="defaultExerciseTypeConverter" alias="exerciseTypeConverter"/>
     <bean id="defaultExerciseTypeConverter" class="progressa.progressaspring.converters.exercisetype.ExerciseTypeConverter"/>
 
