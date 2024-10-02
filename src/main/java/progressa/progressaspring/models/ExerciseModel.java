@@ -1,5 +1,6 @@
 package progressa.progressaspring.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,7 +42,7 @@ public class ExerciseModel {
     @JoinColumn(name = "exercise_type_id")
     private ExerciseTypeModel exerciseTypeModel;
 
-    @OneToMany(mappedBy = "exerciseModel")
+    @OneToMany(mappedBy = "exerciseModel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SetModel> setModels;
 
 }
