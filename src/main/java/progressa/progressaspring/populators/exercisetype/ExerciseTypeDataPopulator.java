@@ -15,6 +15,7 @@ public class ExerciseTypeDataPopulator extends BasePopulator<ExerciseTypeData, E
         Assert.notNull(exerciseTypeDataTarget, TARGET_NOT_NULL_MESSAGE);
 
         exerciseTypeDataTarget.setName(exerciseTypeDataSource.getName());
+        exerciseTypeDataTarget.setExerciseDatas(exerciseTypeDataSource.getExerciseDatas());
     }
 
 }
