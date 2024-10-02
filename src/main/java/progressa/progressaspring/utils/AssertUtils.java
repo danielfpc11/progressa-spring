@@ -18,7 +18,7 @@ public class AssertUtils {
     }
 
     public static void notNull(final Object object, final Class<?> objectClass) throws IllegalArgumentException {
-        Assert.notNull(object, String.format(OBJECT_NOT_NULL_MESSAGE, objectClass));
+        Assert.notNull(object, String.format(OBJECT_NOT_NULL_MESSAGE, objectClass.getSimpleName()));
     }
 
 }
