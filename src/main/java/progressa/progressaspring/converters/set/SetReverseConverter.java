@@ -6,6 +6,7 @@ import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.services.ExerciseService;
 import progressa.progressaspring.utils.AssertUtils;
+import java.util.Optional;
 
 /**
  * @author danielfpc11@gmail.com
@@ -24,8 +25,9 @@ public class SetReverseConverter implements Converter<SetData, SetModel> {
                        .weight(setData.getWeight())
                        .repetitions(setData.getRepetitions())
                        .rir(setData.getRir())
-                       .exerciseModel(exerciseService.findById(setData.getExerciseId())
-                                                     .orElseThrow())
+                       .exerciseModel(Optional.ofNullable(setData.getExerciseId())
+                                              .flatMap(exerciseService::findById)
+                                              .orElse(null))
                        .build();
     }
 
