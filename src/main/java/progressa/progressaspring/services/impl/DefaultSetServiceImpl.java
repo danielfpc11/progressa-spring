@@ -1,9 +1,7 @@
 package progressa.progressaspring.services.impl;
 
 import jakarta.annotation.Resource;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.repositories.SetRepository;
 import progressa.progressaspring.services.SetService;
