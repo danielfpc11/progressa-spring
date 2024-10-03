@@ -35,7 +35,7 @@ public interface SetFacade {
     void deleteById(final Long id) throws IllegalArgumentException;
 
     /**
-     * Saves an set data entry.
+     * Saves a set data entry.
      *
      * @param setData the set data entry to save.
      * @return the saved set data entry.
