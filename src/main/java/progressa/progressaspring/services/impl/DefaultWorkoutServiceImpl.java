@@ -4,6 +4,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import progressa.progressaspring.models.WorkoutModel;
 import progressa.progressaspring.repositories.WorkoutRepository;
+import progressa.progressaspring.services.JpaBidirectionalService;
 import progressa.progressaspring.services.WorkoutService;
 import progressa.progressaspring.utils.AssertUtils;
 
@@ -18,6 +19,8 @@ public class DefaultWorkoutServiceImpl implements WorkoutService {
 
     @Resource
     private WorkoutRepository workoutRepository;
+    @Resource
+    private JpaBidirectionalService jpaBidirectionalService;
 
     @Override
     public List<WorkoutModel> findAll() {
@@ -39,11 +42,7 @@ public class DefaultWorkoutServiceImpl implements WorkoutService {
     @Override
     public WorkoutModel save(final WorkoutModel workoutModel) throws IllegalArgumentException {
         AssertUtils.notNull(workoutModel, WorkoutModel.class);
-        workoutModel.setExerciseModels(workoutModel.getExerciseModels()
-                                                   .stream()
-                                                   .peek(exerciseModel -> exerciseModel.setWorkoutModel(workoutModel))
-                                                   .toList());
-
+        jpaBidirectionalService.setWorkoutRelationships(workoutModel);
         return workoutRepository.save(workoutModel);
     }
 

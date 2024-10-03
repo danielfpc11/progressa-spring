@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import progressa.progressaspring.models.ExerciseModel;
 import progressa.progressaspring.repositories.ExerciseRepository;
 import progressa.progressaspring.services.ExerciseService;
+import progressa.progressaspring.services.JpaBidirectionalService;
 import progressa.progressaspring.utils.AssertUtils;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class DefaultExerciseServiceImpl implements ExerciseService {
 
     @Resource
     private ExerciseRepository exerciseRepository;
+    @Resource
+    private JpaBidirectionalService jpaBidirectionalService;
 
     @Override
     public List<ExerciseModel> findAll() {
@@ -39,11 +42,7 @@ public class DefaultExerciseServiceImpl implements ExerciseService {
     @Override
     public ExerciseModel save(final ExerciseModel exerciseModel) throws IllegalArgumentException {
         AssertUtils.notNull(exerciseModel, ExerciseModel.class);
-        exerciseModel.setSetModels(exerciseModel.getSetModels()
-                                                .stream()
-                                                .peek(setModel -> setModel.setExerciseModel(exerciseModel))
-                                                .toList());
-
+        jpaBidirectionalService.setExerciseRelationships(exerciseModel);
         return exerciseRepository.save(exerciseModel);
     }
 
