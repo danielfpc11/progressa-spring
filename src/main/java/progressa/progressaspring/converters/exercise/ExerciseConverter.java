@@ -22,14 +22,16 @@ public class ExerciseConverter implements Converter<ExerciseModel, ExerciseData>
     @Override
     public ExerciseData convert(final ExerciseModel exerciseModel) {
         AssertUtils.notNull(exerciseModel, ExerciseModel.class);
+        final Optional<ExerciseTypeModel> exerciseTypeModelOptional = Optional.ofNullable(exerciseModel.getExerciseTypeModel());
         return ExerciseData.builder()
                            .id(exerciseModel.getId())
                            .workoutId(Optional.ofNullable(exerciseModel.getWorkoutModel())
                                               .map(WorkoutModel::getId)
                                               .orElse(null))
-                           .exerciseTypeId(Optional.ofNullable(exerciseModel.getExerciseTypeModel())
-                                                   .map(ExerciseTypeModel::getId)
-                                                   .orElse(null))
+                           .exerciseTypeId(exerciseTypeModelOptional.map(ExerciseTypeModel::getId)
+                                                                    .orElse(null))
+                           .exerciseTypeName(exerciseTypeModelOptional.map(ExerciseTypeModel::getName)
+                                                                      .orElse(null))
                            .setDatas(exerciseModel.getSetModels()
                                                   .stream()
                                                   .map(setConverter::convert)

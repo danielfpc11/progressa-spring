@@ -19,6 +19,7 @@ public class ExerciseData {
     private Long id;
     private Long workoutId;
     private Long exerciseTypeId;
+    private String exerciseTypeName;
     private List<SetData> setDatas;
 
 }
