@@ -17,7 +17,8 @@ import java.util.Collections;
 @ExtendWith(MockitoExtension.class)
 public class ExerciseTypeDataPopulatorTest extends BasePopulatorTest {
 
-    public static final String EXERCISE_TYPE_NAME = "Exercise Type Name";
+    private static final String EXERCISE_TYPE_NAME = "Exercise Type Name";
+
     @InjectMocks
     private ExerciseTypeDataPopulator exerciseTypeDataPopulator;
 
