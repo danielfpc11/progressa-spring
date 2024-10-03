@@ -1,20 +1,23 @@
 package progressa.progressaspring.converters.set;
 
-import lombok.AllArgsConstructor;
+import jakarta.annotation.Resource;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.services.ExerciseService;
 import progressa.progressaspring.utils.AssertUtils;
+
 import java.util.Optional;
 
 /**
  * @author danielfpc11@gmail.com
  */
-@AllArgsConstructor
+@Component
 public class SetReverseConverter implements Converter<SetData, SetModel> {
 
-    private final ExerciseService exerciseService;
+    @Resource
+    private ExerciseService exerciseService;
 
     @Override
     public SetModel convert(final SetData setData) {

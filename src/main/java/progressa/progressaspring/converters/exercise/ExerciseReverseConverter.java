@@ -1,7 +1,8 @@
 package progressa.progressaspring.converters.exercise;
 
-import lombok.AllArgsConstructor;
+import jakarta.annotation.Resource;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import progressa.progressaspring.datas.ExerciseData;
 import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.models.ExerciseModel;
@@ -9,17 +10,21 @@ import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.services.ExerciseTypeService;
 import progressa.progressaspring.services.WorkoutService;
 import progressa.progressaspring.utils.AssertUtils;
+
 import java.util.Optional;
 
 /**
  * @author danielfpc11@gmail.com
  */
-@AllArgsConstructor
+@Component
 public class ExerciseReverseConverter implements Converter<ExerciseData, ExerciseModel> {
 
-    private final WorkoutService workoutService;
-    private final ExerciseTypeService exerciseTypeService;
-    private final Converter<SetData, SetModel> setReverseConverter;
+    @Resource
+    private WorkoutService workoutService;
+    @Resource
+    private ExerciseTypeService exerciseTypeService;
+    @Resource
+    private Converter<SetData, SetModel> setReverseConverter;
 
     @Override
     public ExerciseModel convert(final ExerciseData exerciseData) {
