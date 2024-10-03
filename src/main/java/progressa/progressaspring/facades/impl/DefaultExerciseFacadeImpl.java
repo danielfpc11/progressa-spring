@@ -1,23 +1,28 @@
 package progressa.progressaspring.facades.impl;
 
-import lombok.AllArgsConstructor;
+import jakarta.annotation.Resource;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import progressa.progressaspring.datas.ExerciseData;
 import progressa.progressaspring.facades.ExerciseFacade;
 import progressa.progressaspring.models.ExerciseModel;
 import progressa.progressaspring.services.ExerciseService;
+
 import java.util.List;
 import java.util.Optional;
 
 /**
  * @author danielfpc11@gmail.com
  */
-@AllArgsConstructor
+@Component
 public class DefaultExerciseFacadeImpl implements ExerciseFacade {
 
-    private final ExerciseService exerciseService;
-    private final Converter<ExerciseModel, ExerciseData> exerciseConverter;
-    private final Converter<ExerciseData, ExerciseModel> exerciseReverseConverter;
+    @Resource
+    private ExerciseService exerciseService;
+    @Resource
+    private Converter<ExerciseModel, ExerciseData> exerciseConverter;
+    @Resource
+    private Converter<ExerciseData, ExerciseModel> exerciseReverseConverter;
 
     @Override
     public List<ExerciseData> findAll() {

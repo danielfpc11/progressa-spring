@@ -1,7 +1,8 @@
 package progressa.progressaspring.facades.impl;
 
-import lombok.AllArgsConstructor;
+import jakarta.annotation.Resource;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.facades.SetFacade;
 import progressa.progressaspring.models.SetModel;
@@ -13,12 +14,15 @@ import java.util.Optional;
 /**
  * @author danielfpc11@gmail.com
  */
-@AllArgsConstructor
+@Component
 public class DefaultSetFacadeImpl implements SetFacade {
 
-    private final SetService setService;
-    private final Converter<SetModel, SetData> setConverter;
-    private final Converter<SetData, SetModel> setReverseConverter;
+    @Resource
+    private SetService setService;
+    @Resource
+    private Converter<SetModel, SetData> setConverter;
+    @Resource
+    private Converter<SetData, SetModel> setReverseConverter;
 
     @Override
     public List<SetData> findAll() {
