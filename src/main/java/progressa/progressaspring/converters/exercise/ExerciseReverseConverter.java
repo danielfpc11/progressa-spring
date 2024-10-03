@@ -26,8 +26,9 @@ public class ExerciseReverseConverter implements Converter<ExerciseData, Exercis
         AssertUtils.notNull(exerciseData, ExerciseData.class);
         return ExerciseModel.builder()
                             .id(exerciseData.getId())
-                            .workoutModel(workoutService.findById(exerciseData.getWorkoutId())
-                                                        .orElseThrow())
+                            .workoutModel(Optional.ofNullable(exerciseData.getWorkoutId())
+                                                  .flatMap(workoutService::findById)
+                                                  .orElse(null))
                             .exerciseTypeModel(Optional.ofNullable(exerciseData.getExerciseTypeId())
                                                        .flatMap(exerciseTypeService::findById)
                                                        .orElse(null))

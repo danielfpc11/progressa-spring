@@ -39,6 +39,11 @@ public class DefaultWorkoutServiceImpl implements WorkoutService {
     @Override
     public WorkoutModel save(final WorkoutModel workoutModel) throws IllegalArgumentException {
         AssertUtils.notNull(workoutModel, WorkoutModel.class);
+        workoutModel.setExerciseModels(workoutModel.getExerciseModels()
+                                                   .stream()
+                                                   .peek(exerciseModel -> exerciseModel.setWorkoutModel(workoutModel))
+                                                   .toList());
+
         return workoutRepository.save(workoutModel);
     }
 
