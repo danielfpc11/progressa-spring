@@ -1,9 +1,7 @@
 package progressa.progressaspring.services.impl;
 
 import jakarta.annotation.Resource;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 import progressa.progressaspring.models.ExerciseTypeModel;
 import progressa.progressaspring.repositories.ExerciseTypeRepository;
 import progressa.progressaspring.services.ExerciseTypeService;
@@ -41,6 +39,11 @@ public class DefaultExerciseTypeServiceImpl implements ExerciseTypeService {
     @Override
     public ExerciseTypeModel save(final ExerciseTypeModel exerciseTypeModel) throws IllegalArgumentException {
         AssertUtils.notNull(exerciseTypeModel, ExerciseTypeModel.class);
+        exerciseTypeModel.setExerciseModels(exerciseTypeModel.getExerciseModels()
+                                                             .stream()
+                                                             .peek(exerciseModel -> exerciseModel.setExerciseTypeModel(exerciseTypeModel))
+                                                             .toList());
+
         return exerciseTypeRepository.save(exerciseTypeModel);
     }
 

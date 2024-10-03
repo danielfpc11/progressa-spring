@@ -5,8 +5,10 @@ import org.springframework.core.convert.converter.Converter;
 import progressa.progressaspring.datas.ExerciseData;
 import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.models.ExerciseModel;
+import progressa.progressaspring.models.ExerciseTypeModel;
 import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.utils.AssertUtils;
+import java.util.Optional;
 
 /**
  * @author danielfpc11@gmail.com
@@ -22,7 +24,9 @@ public class ExerciseConverter implements Converter<ExerciseModel, ExerciseData>
         return ExerciseData.builder()
                            .id(exerciseModel.getId())
                            .workoutId(exerciseModel.getWorkoutModel().getId())
-                           .exerciseTypeId(exerciseModel.getExerciseTypeModel().getId())
+                           .exerciseTypeId(Optional.ofNullable(exerciseModel.getExerciseTypeModel())
+                                                   .map(ExerciseTypeModel::getId)
+                                                   .orElse(null))
                            .setDatas(exerciseModel.getSetModels()
                                                   .stream()
                                                   .map(setConverter::convert)

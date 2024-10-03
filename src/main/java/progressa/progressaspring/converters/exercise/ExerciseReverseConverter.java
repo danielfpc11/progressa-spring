@@ -9,6 +9,7 @@ import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.services.ExerciseTypeService;
 import progressa.progressaspring.services.WorkoutService;
 import progressa.progressaspring.utils.AssertUtils;
+import java.util.Optional;
 
 /**
  * @author danielfpc11@gmail.com
@@ -27,8 +28,9 @@ public class ExerciseReverseConverter implements Converter<ExerciseData, Exercis
                             .id(exerciseData.getId())
                             .workoutModel(workoutService.findById(exerciseData.getWorkoutId())
                                                         .orElseThrow())
-                            .exerciseTypeModel(exerciseTypeService.findById(exerciseData.getExerciseTypeId())
-                                                                  .orElseThrow())
+                            .exerciseTypeModel(Optional.ofNullable(exerciseData.getExerciseTypeId())
+                                                       .flatMap(exerciseTypeService::findById)
+                                                       .orElse(null))
                             .setModels(exerciseData.getSetDatas()
                                                    .stream()
                                                    .map(setReverseConverter::convert)
