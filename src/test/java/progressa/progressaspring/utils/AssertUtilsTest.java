@@ -3,12 +3,12 @@ package progressa.progressaspring.utils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
+import progressa.progressaspring.BaseTest;
 
 /**
  * @author danielfpc11@gmail.com
  */
-public class AssertUtilsTest {
+public class AssertUtilsTest extends BaseTest {
 
     private static final String ID_NOT_NULL_MESSAGE = "Id must not be null.";
     private static final String ID_POSITIVE_MESSAGE = "Id must be greater than zero.";
@@ -33,16 +33,11 @@ public class AssertUtilsTest {
 
     @Test
     public void notNullIllegalArgumentExceptionTest() {
-        assertIllegalArgumentException(OBJECT_NOT_NULL_MESSAGE, () -> AssertUtils.notNull(null, Object.class));
+        assertException(IllegalArgumentException.class, OBJECT_NOT_NULL_MESSAGE, () -> AssertUtils.notNull(null, Object.class));
     }
 
     private void assertIdNotNullAndPositiveIllegalArgumentException(final Long id, final String message) {
-        assertIllegalArgumentException(message, () -> AssertUtils.idNotNullAndPositive(id));
-    }
-
-    private void assertIllegalArgumentException(final String message, final Executable executable) {
-        final IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class, executable);
-        Assertions.assertEquals(message, illegalArgumentException.getMessage());
+        assertException(IllegalArgumentException.class, message, () -> AssertUtils.idNotNullAndPositive(id));
     }
 
 }

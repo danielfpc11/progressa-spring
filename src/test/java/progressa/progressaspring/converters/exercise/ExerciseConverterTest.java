@@ -9,6 +9,7 @@ import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import progressa.progressaspring.BaseTest;
 import progressa.progressaspring.converters.set.SetConverter;
 import progressa.progressaspring.datas.ExerciseData;
 import progressa.progressaspring.models.ExerciseModel;
@@ -20,7 +21,7 @@ import java.util.Collections;
  * @author danielfpc11@gmail.com
  */
 @ExtendWith(MockitoExtension.class)
-public class ExerciseConverterTest {
+public class ExerciseConverterTest extends BaseTest {
 
     private static final String EXERCISE_MODEL_NOT_NULL_MESSAGE = "ExerciseModel must not be null.";
 
@@ -71,12 +72,7 @@ public class ExerciseConverterTest {
 
     @Test
     void convertNullTest() {
-        assertIllegalArgumentException(EXERCISE_MODEL_NOT_NULL_MESSAGE, () -> exerciseConverter.convert(null));
-    }
-
-    private void assertIllegalArgumentException(final String message, final Executable executable) {
-        final IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class, executable);
-        Assertions.assertEquals(message, illegalArgumentException.getMessage());
+        assertException(IllegalArgumentException.class, EXERCISE_MODEL_NOT_NULL_MESSAGE, () -> exerciseConverter.convert(null));
     }
 
 }

@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.convert.converter.Converter;
+import progressa.progressaspring.BaseTest;
 import progressa.progressaspring.datas.ExerciseData;
 import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.models.ExerciseModel;
@@ -26,7 +27,7 @@ import java.util.Optional;
  * @author danielfpc11@gmail.com
  */
 @ExtendWith(MockitoExtension.class)
-public class ExerciseReverseConverterTest {
+public class ExerciseReverseConverterTest extends BaseTest {
 
     private static final String EXERCISE_DATA_NOT_NULL_MESSAGE = "ExerciseData must not be null.";
 
@@ -80,7 +81,7 @@ public class ExerciseReverseConverterTest {
 
     @Test
     void convertNullTest() {
-        assertIllegalArgumentException(EXERCISE_DATA_NOT_NULL_MESSAGE, () -> exerciseReverseConverter.convert(null));
+        assertException(IllegalArgumentException.class, EXERCISE_DATA_NOT_NULL_MESSAGE, () -> exerciseReverseConverter.convert(null));
     }
 
     private Optional<WorkoutModel> getWorkoutModelOptional() {
@@ -93,11 +94,6 @@ public class ExerciseReverseConverterTest {
         return Optional.of(ExerciseTypeModel.builder()
                                             .id(NumberUtils.LONG_ONE)
                                             .build());
-    }
-
-    private void assertIllegalArgumentException(final String message, final Executable executable) {
-        final IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class, executable);
-        Assertions.assertEquals(message, illegalArgumentException.getMessage());
     }
 
 }
