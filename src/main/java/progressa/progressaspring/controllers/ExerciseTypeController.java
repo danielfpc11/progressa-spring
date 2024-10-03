@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import progressa.progressaspring.datas.ExerciseTypeData;
 import progressa.progressaspring.facades.ExerciseTypeFacade;
 import progressa.progressaspring.populators.BasePopulator;
+
 import java.util.List;
 import java.util.Optional;
 

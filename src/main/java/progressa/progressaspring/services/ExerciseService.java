@@ -1,6 +1,7 @@
 package progressa.progressaspring.services;
 
 import progressa.progressaspring.models.ExerciseModel;
+
 import java.util.List;
 import java.util.Optional;
 
