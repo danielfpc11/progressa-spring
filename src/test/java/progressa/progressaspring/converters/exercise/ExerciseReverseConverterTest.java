@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -20,6 +19,7 @@ import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.models.WorkoutModel;
 import progressa.progressaspring.services.ExerciseTypeService;
 import progressa.progressaspring.services.WorkoutService;
+
 import java.util.Collections;
 import java.util.Optional;
 
