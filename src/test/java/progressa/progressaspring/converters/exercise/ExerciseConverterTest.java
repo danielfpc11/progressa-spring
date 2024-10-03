@@ -8,11 +8,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.core.convert.converter.Converter;
 import progressa.progressaspring.BaseTest;
 import progressa.progressaspring.converters.set.SetConverter;
 import progressa.progressaspring.datas.ExerciseData;
+import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.models.ExerciseModel;
 import progressa.progressaspring.models.ExerciseTypeModel;
+import progressa.progressaspring.models.SetModel;
 import progressa.progressaspring.models.WorkoutModel;
 
 import java.util.Collections;
@@ -29,7 +32,7 @@ public class ExerciseConverterTest extends BaseTest {
     private ExerciseConverter exerciseConverter;
 
     @Mock
-    private SetConverter setConverter;
+    private Converter<SetModel, SetData> setConverter;
 
     private ExerciseModel exerciseModel;
 
