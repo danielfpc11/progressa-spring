@@ -1,5 +1,6 @@
 package progressa.progressaspring.populators.workout;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import progressa.progressaspring.populators.BasePopulator;
 import progressa.progressaspring.models.WorkoutModel;
@@ -7,6 +8,7 @@ import progressa.progressaspring.models.WorkoutModel;
 /**
  * @author danielfpc11@gmail.com
  */
+@Component
 public class WorkoutModelPopulator extends BasePopulator<WorkoutModel, WorkoutModel> {
 
     @Override
