@@ -9,7 +9,6 @@ import progressa.progressaspring.models.WorkoutModel;
  */
 public interface JpaBidirectionalService {
 
-
     /**
      * Sets the relationships for the given workout model, ensuring all
      * associated entities are correctly linked.
