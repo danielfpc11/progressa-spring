@@ -31,4 +31,5 @@ public class BasePopulatorTest extends BaseTest {
     protected void assertTargetNull(final Executable executable) {
         assertException(IllegalArgumentException.class, TARGET_NOT_NULL_MESSAGE, executable);
     }
+
 }
