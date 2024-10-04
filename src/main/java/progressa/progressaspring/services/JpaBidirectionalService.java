@@ -2,6 +2,7 @@ package progressa.progressaspring.services;
 
 import org.springframework.lang.NonNull;
 import progressa.progressaspring.models.ExerciseModel;
+import progressa.progressaspring.models.ExerciseTypeModel;
 import progressa.progressaspring.models.WorkoutModel;
 
 /**
@@ -24,5 +25,13 @@ public interface JpaBidirectionalService {
      * @param exerciseModel the exercise model for which relationships are to be set, must not be null.
      */
     void setExerciseRelationships(@NonNull final ExerciseModel exerciseModel);
+
+    /**
+     * Sets the relationships for the given exercise type model, ensuring all
+     * associated entities are correctly linked.
+     *
+     * @param exerciseTypeModel the exercise model for which relationships are to be set, must not be null.
+     */
+    void setExerciseTypeRelationships(@NonNull final ExerciseTypeModel exerciseTypeModel);
 
 }

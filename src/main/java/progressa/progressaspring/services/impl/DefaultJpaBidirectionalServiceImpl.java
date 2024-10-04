@@ -3,6 +3,7 @@ package progressa.progressaspring.services.impl;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import progressa.progressaspring.models.ExerciseModel;
+import progressa.progressaspring.models.ExerciseTypeModel;
 import progressa.progressaspring.models.WorkoutModel;
 import progressa.progressaspring.services.JpaBidirectionalService;
 
@@ -29,6 +30,14 @@ public class DefaultJpaBidirectionalServiceImpl implements JpaBidirectionalServi
                                                 .stream()
                                                 .peek(setModel -> setModel.setExerciseModel(exerciseModel))
                                                 .toList());
+    }
+
+    @Override
+    public void setExerciseTypeRelationships(@NonNull final ExerciseTypeModel exerciseTypeModel) {
+        exerciseTypeModel.setExerciseModels(exerciseTypeModel.getExerciseModels()
+                                                             .stream()
+                                                             .peek(exerciseModel -> exerciseModel.setExerciseTypeModel(exerciseTypeModel))
+                                                             .toList());
     }
 
 }
