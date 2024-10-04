@@ -36,7 +36,10 @@ public class DefaultJpaBidirectionalServiceImpl implements JpaBidirectionalServi
     public void setExerciseTypeRelationships(@NonNull final ExerciseTypeModel exerciseTypeModel) {
         exerciseTypeModel.setExerciseModels(exerciseTypeModel.getExerciseModels()
                                                              .stream()
-                                                             .peek(exerciseModel -> exerciseModel.setExerciseTypeModel(exerciseTypeModel))
+                                                             .peek(exerciseModel -> {
+                                                                 exerciseModel.setExerciseTypeModel(exerciseTypeModel);
+                                                                 setExerciseRelationships(exerciseModel);
+                                                             })
                                                              .toList());
     }
 
