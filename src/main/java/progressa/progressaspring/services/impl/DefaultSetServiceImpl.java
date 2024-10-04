@@ -26,6 +26,7 @@ public class DefaultSetServiceImpl implements SetService {
 
     @Override
     public Optional<SetModel> findById(final Long id) throws IllegalArgumentException {
+        AssertUtils.idNotNullAndPositive(id);
         return setRepository.findById(id);
     }
 
