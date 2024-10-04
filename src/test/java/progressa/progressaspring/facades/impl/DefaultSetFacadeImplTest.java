@@ -57,7 +57,7 @@ public class DefaultSetFacadeImplTest extends BaseTest {
         Mockito.when(setService.findAll()).thenReturn(Collections.emptyList());
         defaultSetFacadeImpl.findAll();
         Mockito.verify(setService).findAll();
-        Mockito.verify(setConverter, Mockito.never()).convert(setModel);
+        Mockito.verify(setConverter, Mockito.never()).convert(Mockito.any(SetModel.class));
     }
 
     @Test
@@ -105,8 +105,8 @@ public class DefaultSetFacadeImplTest extends BaseTest {
     void saveNullTest() {
         Mockito.doThrow(IllegalArgumentException.class).when(setReverseConverter).convert(null);
         Assertions.assertThrows(IllegalArgumentException.class, () -> defaultSetFacadeImpl.save(null));
-        Mockito.verify(setService, Mockito.never()).save(null);
-        Mockito.verify(setConverter, Mockito.never()).convert(null);
+        Mockito.verify(setService, Mockito.never()).save(Mockito.any(SetModel.class));
+        Mockito.verify(setConverter, Mockito.never()).convert(Mockito.any(SetModel.class));
         Mockito.verify(setReverseConverter).convert(null);
     }
 

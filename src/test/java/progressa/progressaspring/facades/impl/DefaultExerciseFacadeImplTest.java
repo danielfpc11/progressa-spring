@@ -57,7 +57,7 @@ public class DefaultExerciseFacadeImplTest extends BaseTest {
         Mockito.when(exerciseService.findAll()).thenReturn(Collections.emptyList());
         defaultExerciseFacadeImpl.findAll();
         Mockito.verify(exerciseService).findAll();
-        Mockito.verify(exerciseConverter, Mockito.never()).convert(exerciseModel);
+        Mockito.verify(exerciseConverter, Mockito.never()).convert(Mockito.any(ExerciseModel.class));
     }
 
     @Test
@@ -105,8 +105,8 @@ public class DefaultExerciseFacadeImplTest extends BaseTest {
     void saveNullTest() {
         Mockito.doThrow(IllegalArgumentException.class).when(exerciseReverseConverter).convert(null);
         Assertions.assertThrows(IllegalArgumentException.class, () -> defaultExerciseFacadeImpl.save(null));
-        Mockito.verify(exerciseService, Mockito.never()).save(null);
-        Mockito.verify(exerciseConverter, Mockito.never()).convert(null);
+        Mockito.verify(exerciseService, Mockito.never()).save(Mockito.any(ExerciseModel.class));
+        Mockito.verify(exerciseConverter, Mockito.never()).convert(Mockito.any(ExerciseModel.class));
         Mockito.verify(exerciseReverseConverter).convert(null);
     }
 

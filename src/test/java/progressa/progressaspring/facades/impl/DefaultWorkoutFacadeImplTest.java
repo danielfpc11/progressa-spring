@@ -57,7 +57,7 @@ public class DefaultWorkoutFacadeImplTest extends BaseTest {
         Mockito.when(workoutService.findAll()).thenReturn(Collections.emptyList());
         defaultWorkoutFacadeImpl.findAll();
         Mockito.verify(workoutService).findAll();
-        Mockito.verify(workoutConverter, Mockito.never()).convert(workoutModel);
+        Mockito.verify(workoutConverter, Mockito.never()).convert(Mockito.any(WorkoutModel.class));
     }
 
     @Test
@@ -105,8 +105,8 @@ public class DefaultWorkoutFacadeImplTest extends BaseTest {
     void saveNullTest() {
         Mockito.doThrow(IllegalArgumentException.class).when(workoutReverseConverter).convert(null);
         Assertions.assertThrows(IllegalArgumentException.class, () -> defaultWorkoutFacadeImpl.save(null));
-        Mockito.verify(workoutService, Mockito.never()).save(null);
-        Mockito.verify(workoutConverter, Mockito.never()).convert(null);
+        Mockito.verify(workoutService, Mockito.never()).save(Mockito.any(WorkoutModel.class));
+        Mockito.verify(workoutConverter, Mockito.never()).convert(Mockito.any(WorkoutModel.class));
         Mockito.verify(workoutReverseConverter).convert(null);
     }
 
