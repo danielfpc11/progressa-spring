@@ -21,7 +21,7 @@ public class DefaultExerciseServiceImplTest extends BaseTest {
 
     private static final String ID_NOT_NULL_MESSAGE = "Id must not be null.";
     private static final String ID_POSITIVE_MESSAGE = "Id must be greater than zero.";
-    private static final String OBJECT_NOT_NULL_MESSAGE = "ExerciseModel must not be null.";
+    private static final String EXERCISE_MODEL_NOT_NULL_MESSAGE = "ExerciseModel must not be null.";
 
     @InjectMocks
     private DefaultExerciseServiceImpl defaultExerciseServiceImpl;
@@ -80,7 +80,7 @@ public class DefaultExerciseServiceImplTest extends BaseTest {
 
     @Test
     void saveNullTest() {
-        assertException(IllegalArgumentException.class, OBJECT_NOT_NULL_MESSAGE, () -> defaultExerciseServiceImpl.save(null));
+        assertException(IllegalArgumentException.class, EXERCISE_MODEL_NOT_NULL_MESSAGE, () -> defaultExerciseServiceImpl.save(null));
         Mockito.verify(jpaBidirectionalService, Mockito.never()).setExerciseRelationships(null);
         Mockito.verify(exerciseRepository, Mockito.never()).save(null);
     }
