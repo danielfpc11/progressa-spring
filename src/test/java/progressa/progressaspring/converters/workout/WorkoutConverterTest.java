@@ -14,6 +14,7 @@ import progressa.progressaspring.datas.ExerciseData;
 import progressa.progressaspring.datas.WorkoutData;
 import progressa.progressaspring.models.ExerciseModel;
 import progressa.progressaspring.models.WorkoutModel;
+
 import java.util.Collections;
 import java.util.Date;
 

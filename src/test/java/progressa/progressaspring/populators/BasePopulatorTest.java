@@ -1,6 +1,5 @@
 package progressa.progressaspring.populators;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
 import progressa.progressaspring.BaseTest;
 

@@ -6,11 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-import progressa.progressaspring.datas.ExerciseTypeData;
 import progressa.progressaspring.models.ExerciseTypeModel;
-import progressa.progressaspring.populators.BasePopulator;
 import progressa.progressaspring.populators.BasePopulatorTest;
 
 import java.util.Collections;
