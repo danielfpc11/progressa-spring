@@ -1,8 +1,11 @@
 package progressa.progressaspring.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.io.UnsupportedEncodingException;
@@ -11,6 +14,17 @@ import java.io.UnsupportedEncodingException;
  * @author danielfpc11@gmail.com
  */
 public class BaseControllerTest {
+
+    protected static final String DELETE_BY_ID_ENDPOINT = "/delete/";
+    protected static final String FIND_ALL_ENDPOINT = "/all";
+    protected static final String FIND_BY_ID_ENDPOINT = "/get/";
+    protected static final String SAVE_UPDATE_ENDPOINT = "/update/";
+    protected static final String SAVE_NEW_ENDPOINT = "/new";
+
+    @Resource
+    protected MockMvc mockMvc;
+    @Resource
+    protected ObjectMapper objectMapper;
 
     /**
      * Assert that a servlet exception is thrown during the execution of a given executable.
