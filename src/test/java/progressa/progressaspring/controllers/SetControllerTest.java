@@ -1,7 +1,6 @@
 package progressa.progressaspring.controllers;
 
 import com.fasterxml.jackson.databind.type.CollectionType;
-import jakarta.annotation.Resource;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -17,11 +16,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import progressa.progressaspring.datas.SetData;
-import progressa.progressaspring.datas.SetData;
 import progressa.progressaspring.facades.SetFacade;
 import progressa.progressaspring.populators.BasePopulator;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
