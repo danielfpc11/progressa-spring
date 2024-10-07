@@ -26,18 +26,18 @@ import java.util.Optional;
 public class ExerciseController {
 
     @Resource
-    private ExerciseFacade ExerciseFacade;
+    private ExerciseFacade exerciseFacade;
     @Resource
     private BasePopulator<ExerciseData, ExerciseData> exerciseDataPopulator;
 
     @GetMapping("/all")
     public ResponseEntity<List<ExerciseData>> findAll() {
-        return ResponseEntity.ok(ExerciseFacade.findAll());
+        return ResponseEntity.ok(exerciseFacade.findAll());
     }
 
     @GetMapping("/get/{id}")
     public ResponseEntity<ExerciseData> findById(@PathVariable final Long id) {
-        return ExerciseFacade.findById(id)
+        return exerciseFacade.findById(id)
                              .map(ResponseEntity::ok)
                              .orElseThrow();
     }
@@ -45,17 +45,17 @@ public class ExerciseController {
     @PostMapping("/new")
     public ResponseEntity<Object> saveNew(@RequestBody final ExerciseData exerciseData) {
         return Optional.ofNullable(exerciseData)
-                       .map(exercise -> ExerciseFacade.save(exercise))
+                       .map(exercise -> exerciseFacade.save(exercise))
                        .map(exercise -> ResponseEntity.status(HttpStatus.CREATED).build())
                        .orElseThrow();
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> saveUpdate(@PathVariable final Long id, @RequestBody final ExerciseData exerciseData) {
-        return ExerciseFacade.findById(id)
+        return exerciseFacade.findById(id)
                              .map(exerciseDataFound -> {
                                  exerciseDataPopulator.populate(exerciseData, exerciseDataFound);
-                                 return ExerciseFacade.save(exerciseDataFound);
+                                 return exerciseFacade.save(exerciseDataFound);
                              })
                              .map(exerciseDataFound -> ResponseEntity.ok().build())
                              .orElseThrow();
@@ -63,7 +63,7 @@ public class ExerciseController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteById(@PathVariable final Long id) {
-        ExerciseFacade.deleteById(id);
+        exerciseFacade.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
