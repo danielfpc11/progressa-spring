@@ -36,7 +36,7 @@ public class WorkoutController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<WorkoutData> findAll(@PathVariable final Long id) {
+    public ResponseEntity<WorkoutData> findById(@PathVariable final Long id) {
         return workoutFacade.findById(id)
                             .map(ResponseEntity::ok)
                             .orElseThrow();

@@ -36,7 +36,7 @@ public class SetController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<SetData> findAll(@PathVariable final Long id) {
+    public ResponseEntity<SetData> findById(@PathVariable final Long id) {
         return setFacade.findById(id)
                         .map(ResponseEntity::ok)
                         .orElseThrow();
