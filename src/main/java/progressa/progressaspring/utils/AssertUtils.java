@@ -12,6 +12,8 @@ public class AssertUtils {
     private static final String ID_POSITIVE_MESSAGE = "Id must be greater than zero.";
     private static final String OBJECT_NOT_NULL_MESSAGE = "%s must not be null.";
 
+    private AssertUtils() {}
+
     /**
      * Validates that the provided id is not null and is a positive number.
      *
