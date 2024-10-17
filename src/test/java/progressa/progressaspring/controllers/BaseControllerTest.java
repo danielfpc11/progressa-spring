@@ -18,6 +18,7 @@ public class BaseControllerTest {
     protected static final String DELETE_BY_ID_ENDPOINT = "/delete/";
     protected static final String FIND_ALL_ENDPOINT = "/all";
     protected static final String FIND_BY_ID_ENDPOINT = "/get/";
+    protected static final String SAVE_PATCH_ENDPOINT = "/patch/";
     protected static final String SAVE_UPDATE_ENDPOINT = "/update/";
     protected static final String SAVE_NEW_ENDPOINT = "/new";
 
