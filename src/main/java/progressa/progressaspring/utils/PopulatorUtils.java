@@ -24,6 +24,7 @@ public class PopulatorUtils {
     public static void populateExerciseDatas(final ExerciseData exerciseDataSource,
                                              final ExerciseData exerciseDataTarget,
                                              final List<BasePopulator<ExerciseData, ExerciseData>> exercisePopulators) {
+        AssertUtils.notNull(exercisePopulators, List.class);
         exercisePopulators.forEach(exercisePopulator -> exercisePopulator.populate(exerciseDataSource, exerciseDataTarget));
     }
 
@@ -38,6 +39,7 @@ public class PopulatorUtils {
     public static void populateExerciseTypeDatas(final ExerciseTypeData exerciseTypeDataSource,
                                                  final ExerciseTypeData exerciseTypeDataTarget,
                                                  final List<BasePopulator<ExerciseTypeData, ExerciseTypeData>> exerciseTypePopulators) {
+        AssertUtils.notNull(exerciseTypePopulators, List.class);
         exerciseTypePopulators.forEach(exerciseTypePopulator -> exerciseTypePopulator.populate(exerciseTypeDataSource, exerciseTypeDataTarget));
     }
 
@@ -52,6 +54,7 @@ public class PopulatorUtils {
     public static void populateSetDatas(final SetData setDataSource,
                                         final SetData setDataTarget,
                                         final List<BasePopulator<SetData, SetData>> setPopulators) {
+        AssertUtils.notNull(setPopulators, List.class);
         setPopulators.forEach(setPopulator -> setPopulator.populate(setDataSource, setDataTarget));
     }
 
@@ -66,6 +69,7 @@ public class PopulatorUtils {
     public static void populateWorkoutDatas(final WorkoutData workoutDataSource,
                                             final WorkoutData workoutDataTarget,
                                             final List<BasePopulator<WorkoutData, WorkoutData>> workoutPopulators) {
+        AssertUtils.notNull(workoutPopulators, List.class);
         workoutPopulators.forEach(workoutPopulator -> workoutPopulator.populate(workoutDataSource, workoutDataTarget));
     }
 
