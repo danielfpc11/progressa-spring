@@ -39,11 +39,11 @@ public class SetDataPopulatorTest extends BasePopulatorTest {
         setDataPopulator.populate(setDataSource, setDataTarget);
 
         Assertions.assertNull(setDataTarget.getId());
+        Assertions.assertNull(setDataTarget.getExerciseId());
         Assertions.assertEquals(setDataSource.getNumber(), setDataTarget.getNumber());
         Assertions.assertEquals(setDataSource.getWeight(), setDataTarget.getWeight());
         Assertions.assertEquals(setDataSource.getRepetitions(), setDataTarget.getRepetitions());
         Assertions.assertEquals(setDataSource.getRir(), setDataTarget.getRir());
-        Assertions.assertEquals(setDataSource.getExerciseId(), setDataTarget.getExerciseId());
     }
 
     @Test
