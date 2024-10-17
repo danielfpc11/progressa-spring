@@ -30,6 +30,8 @@ import java.util.Optional;
 @ContextConfiguration(classes = SetController.class)
 public class SetControllerTest extends BaseControllerTest {
 
+    private static final int POPULATORS_FOR_PATCH = 1;
+    private static final int POPULATORS_FOR_UPDATE = 2;
     private static final String SET_BASE_ENDPOINT = "/set";
 
     @MockBean
@@ -88,6 +90,7 @@ public class SetControllerTest extends BaseControllerTest {
 
     @Test
     void saveNewTest() throws Exception {
+        setData.setId(null);
         Mockito.when(setFacade.save(setData)).thenReturn(setData);
         final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.post(SET_BASE_ENDPOINT + SAVE_NEW_ENDPOINT)
                                                                                   .contentType(MediaType.APPLICATION_JSON)
@@ -117,7 +120,7 @@ public class SetControllerTest extends BaseControllerTest {
                                                                                   .content(objectMapper.writeValueAsString(setData)));
         Mockito.verify(setFacade).findById(NumberUtils.LONG_ONE);
         Mockito.verify(setFacade).save(setData);
-        Mockito.verify(setDataPopulator).populate(setData, setData);
+        Mockito.verify(setDataPopulator, Mockito.times(POPULATORS_FOR_UPDATE)).populate(setData, setData);
         resultActions.andExpectAll(MockMvcResultMatchers.status().isOk(),
                                    MockMvcResultMatchers.content().bytes(ArrayUtils.EMPTY_BYTE_ARRAY));
     }
@@ -134,6 +137,40 @@ public class SetControllerTest extends BaseControllerTest {
     @Test
     void saveUpdateNullBodyTest() throws Exception {
         final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.put(SET_BASE_ENDPOINT + SAVE_UPDATE_ENDPOINT + NumberUtils.LONG_ONE)
+                                                                                  .contentType(MediaType.APPLICATION_JSON)
+                                                                                  .content(StringUtils.EMPTY));
+        Mockito.verify(setFacade, Mockito.never()).save(setData);
+        resultActions.andExpectAll(MockMvcResultMatchers.status().isBadRequest(),
+                                   MockMvcResultMatchers.content().bytes(ArrayUtils.EMPTY_BYTE_ARRAY));
+    }
+
+    @Test
+    void savePatchTest() throws Exception {
+        Mockito.when(setFacade.findById(NumberUtils.LONG_ONE)).thenReturn(Optional.of(setData));
+        Mockito.when(setFacade.save(setData)).thenReturn(setData);
+        Mockito.doNothing().when(setDataPopulator).populate(setData, setData);
+        final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.patch(SET_BASE_ENDPOINT + SAVE_PATCH_ENDPOINT + NumberUtils.LONG_ONE)
+                                                                                  .contentType(MediaType.APPLICATION_JSON)
+                                                                                  .content(objectMapper.writeValueAsString(setData)));
+        Mockito.verify(setFacade).findById(NumberUtils.LONG_ONE);
+        Mockito.verify(setFacade).save(setData);
+        Mockito.verify(setDataPopulator, Mockito.times(POPULATORS_FOR_PATCH)).populate(setData, setData);
+        resultActions.andExpectAll(MockMvcResultMatchers.status().isOk(),
+                                   MockMvcResultMatchers.content().bytes(ArrayUtils.EMPTY_BYTE_ARRAY));
+    }
+
+    @Test
+    void savePatchNotFoundTest() {
+        Mockito.when(setFacade.findById(NumberUtils.LONG_ONE)).thenReturn(Optional.empty());
+        assertServletException(NoSuchElementException.class, () -> mockMvc.perform(MockMvcRequestBuilders.patch(SET_BASE_ENDPOINT + SAVE_PATCH_ENDPOINT + NumberUtils.LONG_ONE)
+                                                                                                         .contentType(MediaType.APPLICATION_JSON)
+                                                                                                         .content(objectMapper.writeValueAsString(setData))));
+        Mockito.verify(setFacade).findById(NumberUtils.LONG_ONE);
+    }
+
+    @Test
+    void savePatchNullBodyTest() throws Exception {
+        final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.patch(SET_BASE_ENDPOINT + SAVE_PATCH_ENDPOINT + NumberUtils.LONG_ONE)
                                                                                   .contentType(MediaType.APPLICATION_JSON)
                                                                                   .content(StringUtils.EMPTY));
         Mockito.verify(setFacade, Mockito.never()).save(setData);
