@@ -38,8 +38,8 @@ public class WorkoutDataPopulatorTest extends BasePopulatorTest {
         workoutDataPopulator.populate(workoutDataSource, workoutDataTarget);
 
         Assertions.assertNull(workoutDataTarget.getId());
+        Assertions.assertNull(workoutDataTarget.getExerciseDatas());
         Assertions.assertEquals(workoutDataSource.getDate(), workoutDataTarget.getDate());
-        Assertions.assertEquals(workoutDataSource.getExerciseDatas(), workoutDataTarget.getExerciseDatas());
     }
 
     @Test
