@@ -66,7 +66,7 @@ public class WorkoutController {
 
     @PatchMapping("/patch/{id}")
     public ResponseEntity<Object> savePatch(@PathVariable final Long id,
-                                            @Valid @RequestBody final WorkoutData workoutData) {
+                                            @RequestBody @Valid final WorkoutData workoutData) {
         return saveUpdate(id, workoutData, List.of(workoutDataPopulator));
     }
 
