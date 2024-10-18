@@ -31,6 +31,8 @@ import java.util.Optional;
 @ContextConfiguration(classes = ExerciseTypeController.class)
 public class ExerciseTypeControllerTest extends BaseControllerTest {
 
+    private static final int POPULATORS_FOR_PATCH = 1;
+    private static final int POPULATORS_FOR_UPDATE = 2;
     private static final String EXERCISE_TYPE_BASE_ENDPOINT = "/exercise-type";
     private static final String EXERCISE_TYPE_NAME = "Exercise Type Name";
 
@@ -87,6 +89,7 @@ public class ExerciseTypeControllerTest extends BaseControllerTest {
 
     @Test
     void saveNewTest() throws Exception {
+        exerciseTypeData.setId(null);
         Mockito.when(exerciseTypeFacade.save(exerciseTypeData)).thenReturn(exerciseTypeData);
         final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.post(EXERCISE_TYPE_BASE_ENDPOINT + SAVE_NEW_ENDPOINT)
                                                                                   .contentType(MediaType.APPLICATION_JSON)
@@ -116,7 +119,7 @@ public class ExerciseTypeControllerTest extends BaseControllerTest {
                                                                                   .content(objectMapper.writeValueAsString(exerciseTypeData)));
         Mockito.verify(exerciseTypeFacade).findById(NumberUtils.LONG_ONE);
         Mockito.verify(exerciseTypeFacade).save(exerciseTypeData);
-        Mockito.verify(exerciseTypeDataPopulator).populate(exerciseTypeData, exerciseTypeData);
+        Mockito.verify(exerciseTypeDataPopulator, Mockito.times(POPULATORS_FOR_UPDATE)).populate(exerciseTypeData, exerciseTypeData);
         resultActions.andExpectAll(MockMvcResultMatchers.status().isOk(),
                                    MockMvcResultMatchers.content().bytes(ArrayUtils.EMPTY_BYTE_ARRAY));
     }
@@ -133,6 +136,40 @@ public class ExerciseTypeControllerTest extends BaseControllerTest {
     @Test
     void saveUpdateNullBodyTest() throws Exception {
         final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.put(EXERCISE_TYPE_BASE_ENDPOINT + SAVE_UPDATE_ENDPOINT + NumberUtils.LONG_ONE)
+                                                                                  .contentType(MediaType.APPLICATION_JSON)
+                                                                                  .content(StringUtils.EMPTY));
+        Mockito.verify(exerciseTypeFacade, Mockito.never()).save(exerciseTypeData);
+        resultActions.andExpectAll(MockMvcResultMatchers.status().isBadRequest(),
+                                   MockMvcResultMatchers.content().bytes(ArrayUtils.EMPTY_BYTE_ARRAY));
+    }
+
+    @Test
+    void savePatchTest() throws Exception {
+        Mockito.when(exerciseTypeFacade.findById(NumberUtils.LONG_ONE)).thenReturn(Optional.of(exerciseTypeData));
+        Mockito.when(exerciseTypeFacade.save(exerciseTypeData)).thenReturn(exerciseTypeData);
+        Mockito.doNothing().when(exerciseTypeDataPopulator).populate(exerciseTypeData, exerciseTypeData);
+        final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.patch(EXERCISE_TYPE_BASE_ENDPOINT + SAVE_PATCH_ENDPOINT + NumberUtils.LONG_ONE)
+                                                                                  .contentType(MediaType.APPLICATION_JSON)
+                                                                                  .content(objectMapper.writeValueAsString(exerciseTypeData)));
+        Mockito.verify(exerciseTypeFacade).findById(NumberUtils.LONG_ONE);
+        Mockito.verify(exerciseTypeFacade).save(exerciseTypeData);
+        Mockito.verify(exerciseTypeDataPopulator, Mockito.times(POPULATORS_FOR_PATCH)).populate(exerciseTypeData, exerciseTypeData);
+        resultActions.andExpectAll(MockMvcResultMatchers.status().isOk(),
+                                   MockMvcResultMatchers.content().bytes(ArrayUtils.EMPTY_BYTE_ARRAY));
+    }
+
+    @Test
+    void savePatchNotFoundTest() {
+        Mockito.when(exerciseTypeFacade.findById(NumberUtils.LONG_ONE)).thenReturn(Optional.empty());
+        assertServletException(NoSuchElementException.class, () -> mockMvc.perform(MockMvcRequestBuilders.patch(EXERCISE_TYPE_BASE_ENDPOINT + SAVE_PATCH_ENDPOINT + NumberUtils.LONG_ONE)
+                                                                                                         .contentType(MediaType.APPLICATION_JSON)
+                                                                                                         .content(objectMapper.writeValueAsString(exerciseTypeData))));
+        Mockito.verify(exerciseTypeFacade).findById(NumberUtils.LONG_ONE);
+    }
+
+    @Test
+    void savePatchNullBodyTest() throws Exception {
+        final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.patch(EXERCISE_TYPE_BASE_ENDPOINT + SAVE_PATCH_ENDPOINT + NumberUtils.LONG_ONE)
                                                                                   .contentType(MediaType.APPLICATION_JSON)
                                                                                   .content(StringUtils.EMPTY));
         Mockito.verify(exerciseTypeFacade, Mockito.never()).save(exerciseTypeData);
