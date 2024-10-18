@@ -1,3 +1,4 @@
+
 package progressa.progressaspring.populators.exercise;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -16,12 +17,12 @@ import java.util.Collections;
  * @author danielfpc11@gmail.com
  */
 @ExtendWith(MockitoExtension.class)
-public class ExerciseDataPopulatorTest extends BasePopulatorTest {
+public class ExerciseDataRelationshipsPopulatorTest extends BasePopulatorTest {
 
     private static final String EXERCISE_TYPE_NAME = "Exercise Type Name";
 
     @InjectMocks
-    private ExerciseDataPopulator exerciseDataPopulator;
+    private ExerciseDataRelationshipsPopulator exerciseDataRelationshipsPopulator;
 
     private ExerciseData exerciseDataSource;
     private ExerciseData exerciseDataTarget;
@@ -39,23 +40,20 @@ public class ExerciseDataPopulatorTest extends BasePopulatorTest {
 
     @Test
     void populateTest() {
-        exerciseDataPopulator.populate(exerciseDataSource, exerciseDataTarget);
+        exerciseDataRelationshipsPopulator.populate(exerciseDataSource, exerciseDataTarget);
 
         Assertions.assertNull(exerciseDataTarget.getId());
-        Assertions.assertNull(exerciseDataTarget.getSetDatas());
-        Assertions.assertEquals(exerciseDataSource.getWorkoutId(), exerciseDataTarget.getWorkoutId());
-        Assertions.assertEquals(exerciseDataSource.getExerciseTypeId(), exerciseDataTarget.getExerciseTypeId());
-        Assertions.assertEquals(exerciseDataSource.getExerciseTypeName(), exerciseDataTarget.getExerciseTypeName());
+        Assertions.assertEquals(exerciseDataSource.getSetDatas(), exerciseDataTarget.getSetDatas());
     }
 
     @Test
     void populateSourceNullTest() {
-        assertSourceNull(() -> exerciseDataPopulator.populate(null, exerciseDataTarget));
+        assertSourceNull(() -> exerciseDataRelationshipsPopulator.populate(null, exerciseDataTarget));
     }
 
     @Test
     void populateTargetNullTest() {
-        assertTargetNull(() -> exerciseDataPopulator.populate(exerciseDataSource, null));
+        assertTargetNull(() -> exerciseDataRelationshipsPopulator.populate(exerciseDataSource, null));
     }
 
 }
