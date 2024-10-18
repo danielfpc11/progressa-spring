@@ -67,7 +67,7 @@ public class ExerciseTypeController {
     @PatchMapping("/patch/{id}")
     public ResponseEntity<Object> savePatch(@PathVariable final Long id,
                                             @RequestBody @Valid final ExerciseTypeData exerciseTypeData) {
-        return saveUpdate(id, exerciseTypeData, List.of(exerciseTypeDataPopulator, exerciseTypeDataRelationshipsPopulator));
+        return saveUpdate(id, exerciseTypeData, List.of(exerciseTypeDataPopulator));
     }
 
     @DeleteMapping("/delete/{id}")
