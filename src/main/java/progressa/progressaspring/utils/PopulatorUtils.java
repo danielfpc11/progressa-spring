@@ -19,13 +19,13 @@ public class PopulatorUtils {
      *
      * @param exerciseDataSource the source {@link ExerciseData} object from which data will be copied
      * @param exerciseDataTarget the target {@link ExerciseData} object to which data will be copied
-     * @param exercisePopulators a list of {@link BasePopulator} instances used to populate the target object.
+     * @param exerciseDataPopulators a list of {@link BasePopulator} instances used to populate the target object.
      */
     public static void populateExerciseDatas(final ExerciseData exerciseDataSource,
                                              final ExerciseData exerciseDataTarget,
-                                             final List<BasePopulator<ExerciseData, ExerciseData>> exercisePopulators) {
-        AssertUtils.notNull(exercisePopulators, List.class);
-        exercisePopulators.forEach(exercisePopulator -> exercisePopulator.populate(exerciseDataSource, exerciseDataTarget));
+                                             final List<BasePopulator<ExerciseData, ExerciseData>> exerciseDataPopulators) {
+        AssertUtils.notNull(exerciseDataPopulators, List.class);
+        exerciseDataPopulators.forEach(exerciseDataPopulator -> exerciseDataPopulator.populate(exerciseDataSource, exerciseDataTarget));
     }
 
     /**
@@ -34,13 +34,13 @@ public class PopulatorUtils {
      *
      * @param exerciseTypeDataSource the source {@link ExerciseTypeData} object from which data will be copied
      * @param exerciseTypeDataTarget the target {@link ExerciseTypeData} object to which data will be copied
-     * @param exerciseTypePopulators a list of {@link BasePopulator} instances used to populate the target object.
+     * @param exerciseTypeDataPopulators a list of {@link BasePopulator} instances used to populate the target object.
      */
     public static void populateExerciseTypeDatas(final ExerciseTypeData exerciseTypeDataSource,
                                                  final ExerciseTypeData exerciseTypeDataTarget,
-                                                 final List<BasePopulator<ExerciseTypeData, ExerciseTypeData>> exerciseTypePopulators) {
-        AssertUtils.notNull(exerciseTypePopulators, List.class);
-        exerciseTypePopulators.forEach(exerciseTypePopulator -> exerciseTypePopulator.populate(exerciseTypeDataSource, exerciseTypeDataTarget));
+                                                 final List<BasePopulator<ExerciseTypeData, ExerciseTypeData>> exerciseTypeDataPopulators) {
+        AssertUtils.notNull(exerciseTypeDataPopulators, List.class);
+        exerciseTypeDataPopulators.forEach(exerciseTypeDataPopulator -> exerciseTypeDataPopulator.populate(exerciseTypeDataSource, exerciseTypeDataTarget));
     }
 
     /**
@@ -49,13 +49,13 @@ public class PopulatorUtils {
      *
      * @param setDataSource the source {@link SetData} object from which data will be copied
      * @param setDataTarget the target {@link SetData} object to which data will be copied
-     * @param setPopulators a list of {@link BasePopulator} instances used to populate the target object.
+     * @param setDataPopulators a list of {@link BasePopulator} instances used to populate the target object.
      */
     public static void populateSetDatas(final SetData setDataSource,
                                         final SetData setDataTarget,
-                                        final List<BasePopulator<SetData, SetData>> setPopulators) {
-        AssertUtils.notNull(setPopulators, List.class);
-        setPopulators.forEach(setPopulator -> setPopulator.populate(setDataSource, setDataTarget));
+                                        final List<BasePopulator<SetData, SetData>> setDataPopulators) {
+        AssertUtils.notNull(setDataPopulators, List.class);
+        setDataPopulators.forEach(setDataPopulator -> setDataPopulator.populate(setDataSource, setDataTarget));
     }
 
     /**
@@ -64,13 +64,13 @@ public class PopulatorUtils {
      *
      * @param workoutDataSource the source {@link WorkoutData} object from which data will be copied
      * @param workoutDataTarget the target {@link WorkoutData} object to which data will be copied
-     * @param workoutPopulators a list of {@link BasePopulator} instances used to populate the target object.
+     * @param workoutDataPopulators a list of {@link BasePopulator} instances used to populate the target object.
      */
     public static void populateWorkoutDatas(final WorkoutData workoutDataSource,
                                             final WorkoutData workoutDataTarget,
-                                            final List<BasePopulator<WorkoutData, WorkoutData>> workoutPopulators) {
-        AssertUtils.notNull(workoutPopulators, List.class);
-        workoutPopulators.forEach(workoutPopulator -> workoutPopulator.populate(workoutDataSource, workoutDataTarget));
+                                            final List<BasePopulator<WorkoutData, WorkoutData>> workoutDataPopulators) {
+        AssertUtils.notNull(workoutDataPopulators, List.class);
+        workoutDataPopulators.forEach(workoutDataPopulator -> workoutDataPopulator.populate(workoutDataSource, workoutDataTarget));
     }
 
 }
