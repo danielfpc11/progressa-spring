@@ -39,8 +39,8 @@ public class ExerciseTypeDataPopulatorTest extends BasePopulatorTest {
         exerciseTypeDataPopulator.populate(exerciseTypeDataSource, exerciseTypeDataTarget);
 
         Assertions.assertNull(exerciseTypeDataTarget.getId());
+        Assertions.assertNull(exerciseTypeDataTarget.getExerciseDatas());
         Assertions.assertEquals(exerciseTypeDataSource.getName(), exerciseTypeDataTarget.getName());
-        Assertions.assertEquals(exerciseTypeDataSource.getExerciseDatas(), exerciseTypeDataTarget.getExerciseDatas());
     }
 
     @Test
